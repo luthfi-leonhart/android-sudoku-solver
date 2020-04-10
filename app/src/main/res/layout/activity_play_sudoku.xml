@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.PlaySudokuActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="3">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="96dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="@dimen/margin_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_general"
+        android:layout_marginTop="@dimen/margin_general"
+        android:text="New Game"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/colorAccent"
+        app:icon="@drawable/ic_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+
+    <TextView
+        android:id="@+id/tvTimeHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_general"
+        android:text="Time Consumed"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnNewGame" />
+
+<!--    <Chronometer-->
+<!--        android:id="@+id/chronometer"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="@dimen/margin_general"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvTimeHint" />-->
+
+    <example.sudokusolver.view.custom.Chronometer
+        android:id="@+id/tvTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_general"
+        android:text="00:00:00"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTimeHint" />
+
+    <example.sudokusolver.view.custom.SudokuBoardView
+        android:id="@+id/sudokuBoardView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_above="@id/buttonsLayout"
+        android:layout_below="@id/btnNewGame"
+        android:layout_marginStart="@dimen/margin_general"
+        android:layout_marginTop="@dimen/margin_general"
+        android:layout_marginEnd="@dimen/margin_general"
+        app:layout_constraintBottom_toTopOf="@id/buttonsLayout"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNewGame" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/buttonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnSolve"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/margin_general"
+        app:columnCount="9"
+        app:layout_constraintBottom_toTopOf="@id/btnSolve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sudokuBoardView"
+        app:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/oneButton"
+            style="@style/TextButtonStyle"
+            android:text="1" />
+
+        <TextView
+            android:id="@+id/twoButton"
+            style="@style/TextButtonStyle"
+            android:text="2" />
+
+        <TextView
+            android:id="@+id/threeButton"
+            style="@style/TextButtonStyle"
+            android:text="3" />
+
+        <TextView
+            android:id="@+id/fourButton"
+            style="@style/TextButtonStyle"
+            android:text="4" />
+
+        <TextView
+            android:id="@+id/fiveButton"
+            style="@style/TextButtonStyle"
+            android:text="5" />
+
+        <TextView
+            android:id="@+id/sixButton"
+            style="@style/TextButtonStyle"
+            android:text="6" />
+
+        <TextView
+            android:id="@+id/sevenButton"
+            style="@style/TextButtonStyle"
+            android:text="7" />
+
+        <TextView
+            android:id="@+id/eightButton"
+            style="@style/TextButtonStyle"
+            android:text="8" />
+
+        <TextView
+            android:id="@+id/nineButton"
+            style="@style/TextButtonStyle"
+            android:text="9" />
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSolve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:text="Solve Me!"
+        app:backgroundTint="@color/colorSecondary"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
