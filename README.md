@@ -9,6 +9,8 @@ So I modified it by removing the solvable condition and let the user know if the
 
 The program is written in [Kotlin](https://kotlinlang.org/) and uses [Architecture Components](https://developer.android.com/topic/libraries/architecture/).
 
+You can try the app [here](https://drive.google.com/open?id=13EqVNgxkWKDgOxBfUgwrnsyaNwdtZKMs)
+
 ### Generator
 The generator algorithm is divided into 3 parts
 #### Filling diagonal boxes
