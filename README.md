@@ -9,6 +9,7 @@ So I modified it by removing the solvable condition and let the user know if the
 
 The program is written in [Kotlin](https://kotlinlang.org/) and uses [Architecture Components](https://developer.android.com/topic/libraries/architecture/).
 
+### Generator
 The generator algorithm is divided into 3 parts
 #### Filling diagonal boxes
 Sudoku puzzle has 3 diagonal 3x3 boxes that share neither common rows nor columns. Because of that, it’s super safe to fill them first with digits from 1 to 9 and to already have 33% of the grid completed.
@@ -20,6 +21,7 @@ Here we are iterating through all empty cells from non-diagonal boxes and taking
 Once we have made a grid with correctly filled digits, we have to remove some of them to complete the Sudoku puzzle. Until the desired number of digits is removed, we take the digit from the random row and column.
 This is where I mode the modification from the original generator to remove solvable checker for every removal of digits.
 
+### Solver
 And the solver uses [backtracking algorithm](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms)
 - Place the digit "1" in the first cell and check if it is allowed to be there.
 - If there are no violations (checking row, column, and box constraints) then the algorithm advances to the next cell and places a "1" in that cell.
