@@ -53,7 +53,9 @@ class PlaySudokuActivity : AppCompatActivity(), SudokuBoardView.OnTouchListener 
 
         numberButtons.forEachIndexed { index, button ->
             button.setOnClickListener {
-                viewModel.sudokuGame.handleInput(index + 1)
+                //viewModel.sudokuGame.handleInput(index + 1)
+                Toast.makeText(this, "This is just a gimmick! Coming soon!", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -66,7 +68,7 @@ class PlaySudokuActivity : AppCompatActivity(), SudokuBoardView.OnTouchListener 
 //        deleteButton.setOnClickListener { viewModel.sudokuGame.delete() }
     }
 
-    private fun solveSudoku(){
+    private fun solveSudoku() {
         tvTimer.start()
 
         GlobalScope.launch {
