@@ -7,9 +7,9 @@ The generator and solver algorithm were taken hrom [here](https://medium.com/@ty
 On the original generator it needs to check if the whole field is solvable while removing digits one by one, which sometimes it took to long to generate (more than 5 minutes or so).
 So I modified it by removing the solvable condition and let the user know if the generated board is unsolvable.
 
-The program is written in [Kotlin](https://kotlinlang.org/) and uses [Architecture Components](https://developer.android.com/topic/libraries/architecture/).
+You can try the app [here](https://drive.google.com/open?id=13EqVNgxkWKDgOxBfUgwrnsyaNwdtZKMs).
 
-You can try the app [here](https://drive.google.com/open?id=13EqVNgxkWKDgOxBfUgwrnsyaNwdtZKMs)
+The program is written in [Kotlin](https://kotlinlang.org/) and uses [Architecture Components](https://developer.android.com/topic/libraries/architecture/).
 
 ### Generator
 The generator algorithm is divided into 3 parts
