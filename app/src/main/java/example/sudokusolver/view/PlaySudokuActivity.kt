@@ -75,9 +75,14 @@ class PlaySudokuActivity : AppCompatActivity(), SudokuBoardView.OnTouchListener 
             val solved = viewModel.sudokuGame.solve()
             tvTimer.stop()
 
+            if (solved) return@launch
+
             runOnUiThread {
-                Toast.makeText(this@PlaySudokuActivity, "Solved: $solved", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(
+                    this@PlaySudokuActivity,
+                    "This board cannot be solved",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
