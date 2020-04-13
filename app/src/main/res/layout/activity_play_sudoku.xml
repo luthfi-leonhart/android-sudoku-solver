@@ -15,7 +15,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:background="@color/colorPrimary" />
 
     </LinearLayout>
@@ -23,45 +23,48 @@
     <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="96dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="@dimen/margin_large"
+        android:layout_height="64dp"
+        android:layout_marginTop="@dimen/margin_general"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/btnClear"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="@dimen/margin_general"-->
+    <!--        android:layout_marginTop="@dimen/margin_general"-->
+    <!--        android:text="@string/clear_board"-->
+    <!--        android:textColor="@color/colorPrimary"-->
+    <!--        android:textSize="12sp"-->
+    <!--        app:backgroundTint="@android:color/white"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/btnRandomGame"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/ivLogo" />-->
+
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNewGame"
+        android:id="@+id/btnRandomGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_general"
         android:layout_marginTop="@dimen/margin_general"
-        android:text="New Game"
+        android:text="@string/random_game"
         android:textColor="@android:color/white"
+        android:textSize="12sp"
         app:backgroundTint="@color/colorAccent"
         app:icon="@drawable/ic_add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivLogo" />
 
     <TextView
-        android:id="@+id/tvTimeHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_general"
-        android:text="Time Consumed"
+        android:text="@string/time_consumed"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btnNewGame" />
-
-<!--    <Chronometer-->
-<!--        android:id="@+id/chronometer"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginEnd="@dimen/margin_general"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvTimeHint" />-->
+        app:layout_constraintBottom_toTopOf="@id/tvTimer"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <example.sudokusolver.view.custom.Chronometer
         android:id="@+id/tvTimer"
@@ -72,15 +75,15 @@
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTimeHint" />
+        app:layout_constraintBottom_toBottomOf="@id/btnRandomGame"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <example.sudokusolver.view.custom.SudokuBoardView
         android:id="@+id/sudokuBoardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_above="@id/buttonsLayout"
-        android:layout_below="@id/btnNewGame"
+        android:layout_below="@id/btnRandomGame"
         android:layout_marginStart="@dimen/margin_general"
         android:layout_marginTop="@dimen/margin_general"
         android:layout_marginEnd="@dimen/margin_general"
@@ -88,7 +91,7 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnNewGame" />
+        app:layout_constraintTop_toBottomOf="@id/btnRandomGame" />
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/buttonsLayout"
@@ -105,49 +108,71 @@
         app:orientation="horizontal">
 
         <TextView
-            android:id="@+id/oneButton"
+            android:id="@+id/btnOne"
             style="@style/TextButtonStyle"
             android:text="1" />
 
         <TextView
-            android:id="@+id/twoButton"
+            android:id="@+id/btnTwo"
             style="@style/TextButtonStyle"
             android:text="2" />
 
         <TextView
-            android:id="@+id/threeButton"
+            android:id="@+id/btnThree"
             style="@style/TextButtonStyle"
             android:text="3" />
 
         <TextView
-            android:id="@+id/fourButton"
+            android:id="@+id/btnFour"
             style="@style/TextButtonStyle"
             android:text="4" />
 
         <TextView
-            android:id="@+id/fiveButton"
+            android:id="@+id/btnFive"
             style="@style/TextButtonStyle"
             android:text="5" />
 
         <TextView
-            android:id="@+id/sixButton"
+            android:id="@+id/btnSix"
             style="@style/TextButtonStyle"
             android:text="6" />
 
         <TextView
-            android:id="@+id/sevenButton"
+            android:id="@+id/btnSeven"
             style="@style/TextButtonStyle"
             android:text="7" />
 
         <TextView
-            android:id="@+id/eightButton"
+            android:id="@+id/btnEight"
             style="@style/TextButtonStyle"
             android:text="8" />
 
         <TextView
-            android:id="@+id/nineButton"
+            android:id="@+id/btnNine"
             style="@style/TextButtonStyle"
             android:text="9" />
+
+        <ImageView
+            android:id="@+id/btnErase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="?selectableItemBackgroundBorderless"
+            app:layout_column="8"
+            app:layout_columnWeight="1"
+            app:srcCompat="@drawable/ic_eraser" />
+
+        <TextView
+            android:id="@+id/btnClear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/clear_board"
+            android:textColor="@color/colorAccent"
+            app:layout_column="0"
+            app:layout_columnSpan="3"
+            app:layout_columnWeight="1" />
 
     </androidx.gridlayout.widget.GridLayout>
 
@@ -159,7 +184,7 @@
         android:insetLeft="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
-        android:text="Solve Me!"
+        android:text="@string/solve_now"
         app:backgroundTint="@color/colorSecondary"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

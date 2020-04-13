@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#324d5c</color>
-    <color name="colorPrimaryDark">#273d49</color>
-    <color name="colorAccent">#e37b40</color>
-    <color name="colorSecondary">#54b273</color>
+    <color name="colorPrimary">#27323a</color>
+    <color name="colorPrimaryDark">#435055</color>
+    <color name="colorAccent">#29a19c</color>
+    <color name="colorSecondary">#a3f7bf</color>
 
-    <color name="textPrimary">#324d5c</color>
-    <color name="box1">#324d5c</color>
-    <color name="box2">#273d49</color>
+    <color name="baby_blue">#98ccff</color>
+    <color name="dark_red">#D32F2F</color>
+    <color name="dark_gray">#7e7e7e</color>
+    <color name="gray">#979797</color>
+    <color name="gray_shimmer">#ececec</color>
+    <color name="gray_shimmer_highlight">#E0E0E0</color>
+    <color name="gray2">#999999</color>
+    <color name="light_blue">#edfbfc</color>
+    <color name="light_gray">#fafafa</color>
+    <color name="lipstick">#e92c45</color>
+    <color name="red">#F44336</color>
+    <color name="sunflower">#F6BB42</color>
+    <color name="transparent_black">#CC000000</color>
+    <color name="transparent_gray">#B3818181</color>
+    <color name="transparent_white">#4DFFFFFF</color>
+    <color name="yellow">#EADC01</color>
+
+    <color name="textPrimary">#003545</color>
 </resources>

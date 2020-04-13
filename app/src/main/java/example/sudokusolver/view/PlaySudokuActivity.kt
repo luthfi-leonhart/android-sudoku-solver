@@ -4,11 +4,13 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.afollestad.materialdialogs.LayoutMode
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import example.sudokusolver.R
 import example.sudokusolver.game.Cell
 import example.sudokusolver.view.custom.SudokuBoardView
@@ -47,43 +49,66 @@ class PlaySudokuActivity : AppCompatActivity(), SudokuBoardView.OnTouchListener 
         )
 
         numberButtons = listOf(
-            oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton,
-            sevenButton, eightButton, nineButton
+            btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix,
+            btnSeven, btnEight, btnNine
         )
 
         numberButtons.forEachIndexed { index, button ->
             button.setOnClickListener {
-                //viewModel.sudokuGame.handleInput(index + 1)
-                Toast.makeText(this, "This is just a gimmick! Coming soon!", Toast.LENGTH_SHORT)
-                    .show()
+                viewModel.sudokuGame.handleInput(index + 1)
             }
         }
 
-        btnNewGame.setOnClickListener {
+        btnClear.setOnClickListener {
+            tvTimer.stop()
+            tvTimer.reset()
+            viewModel.sudokuGame.reset()
+        }
+        btnRandomGame.setOnClickListener {
+            tvTimer.stop()
             tvTimer.reset()
             viewModel.sudokuGame.generate()
         }
+        btnErase.setOnClickListener {
+            viewModel.sudokuGame.delete()
+        }
         btnSolve.setOnClickListener { solveSudoku() }
 //        notesButton.setOnClickListener { viewModel.sudokuGame.changeNoteTakingState() }
-//        deleteButton.setOnClickListener { viewModel.sudokuGame.delete() }
     }
 
     private fun solveSudoku() {
+        val totalFilledCells = viewModel.sudokuGame.totalFilledCells
+        val minimumNumberOfClues = viewModel.sudokuGame.minimumNumberOfClues
+
+        if (totalFilledCells < minimumNumberOfClues) {
+            val cluesLeft = minimumNumberOfClues - totalFilledCells
+            showDialog("The minimum clues to solve is $minimumNumberOfClues. You need $cluesLeft more clue(s).")
+            return
+        }
+
+        if (viewModel.sudokuGame.hasConflictingCells) {
+            showDialog("You have conflicting cells. Resolve it before proceeding further.")
+            return
+        }
+
+        tvTimer.reset()
         tvTimer.start()
+        btnSolve.isEnabled = false
 
         GlobalScope.launch {
             val solved = viewModel.sudokuGame.solve()
             tvTimer.stop()
 
-            if (solved) return@launch
-
             runOnUiThread {
-                Toast.makeText(
-                    this@PlaySudokuActivity,
-                    "This board cannot be solved",
-                    Toast.LENGTH_SHORT
-                ).show()
+                btnSolve.isEnabled = true
+                if (!solved) showDialog("This board cannot be solved.")
             }
+        }
+    }
+
+    private fun showDialog(message: String) {
+        MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+            message(text = message)
         }
     }
 

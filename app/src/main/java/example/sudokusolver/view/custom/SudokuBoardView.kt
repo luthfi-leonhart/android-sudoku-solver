@@ -54,12 +54,12 @@ class SudokuBoardView(context: Context, attributeSet: AttributeSet) : View(conte
 
     private val cellPaint1 = Paint().apply {
         style = Paint.Style.FILL_AND_STROKE
-        color = ContextCompat.getColor(context, R.color.box1)
+        color = ContextCompat.getColor(context, R.color.colorPrimary)
     }
 
     private val cellPaint2 = Paint().apply {
         style = Paint.Style.FILL_AND_STROKE
-        color = ContextCompat.getColor(context, R.color.box2)
+        color = ContextCompat.getColor(context, R.color.colorPrimaryDark)
     }
 
     private val textPaint = Paint().apply {
@@ -70,6 +70,12 @@ class SudokuBoardView(context: Context, attributeSet: AttributeSet) : View(conte
     private val startingCellTextPaint = Paint().apply {
         style = Paint.Style.FILL_AND_STROKE
         color = ContextCompat.getColor(context, R.color.colorAccent)
+        typeface = Typeface.DEFAULT_BOLD
+    }
+
+    private val conflictingCellTextPaint = Paint().apply {
+        style = Paint.Style.FILL_AND_STROKE
+        color = ContextCompat.getColor(context, R.color.red)
         typeface = Typeface.DEFAULT_BOLD
     }
 
@@ -97,6 +103,7 @@ class SudokuBoardView(context: Context, attributeSet: AttributeSet) : View(conte
         noteTextPaint.textSize = cellSizePixels / GRID_SIZE_SQUARE_ROOT.toFloat()
         textPaint.textSize = cellSizePixels / 1.5F
         startingCellTextPaint.textSize = cellSizePixels / 1.5F
+        conflictingCellTextPaint.textSize = cellSizePixels / 1.5F
     }
 
     private fun fillCells(canvas: Canvas) {
@@ -213,7 +220,11 @@ class SudokuBoardView(context: Context, attributeSet: AttributeSet) : View(conte
                 val col = cell.col
                 val valueString = cell.value.toString()
 
-                val paintToUse = if (cell.isStartingCell) startingCellTextPaint else textPaint
+                val paintToUse = when {
+                    cell.isConflictingCell -> conflictingCellTextPaint
+                    cell.isStartingCell -> startingCellTextPaint
+                    else -> textPaint
+                }
                 val textBounds = Rect()
                 paintToUse.getTextBounds(valueString, 0, valueString.length, textBounds)
                 val textWidth = paintToUse.measureText(valueString)

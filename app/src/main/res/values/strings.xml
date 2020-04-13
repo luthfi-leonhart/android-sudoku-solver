@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Sudoku Solver</string>
+    <string name="app_version">1.10</string>
+
+    <string name="random_game">Random Game</string>
+    <string name="clear_board">Clear Board</string>
+    <string name="time_consumed">Time Consumed</string>
+    <string name="solve_now">Solve Now!</string>
 </resources>
