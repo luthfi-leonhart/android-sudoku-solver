@@ -21,7 +21,7 @@ Here we are iterating through all empty cells from non-diagonal boxes and taking
 
 #### Removing the desired number of digits
 Once we have made a grid with correctly filled digits, we have to remove some of them to complete the Sudoku puzzle. Until the desired number of digits is removed, we take the digit from the random row and column.
-This is where I mode the modification from the original generator to remove solvable checker for every removal of digits.
+This is where I made the modification from the original generator to remove solvable checker for every removal of digits.
 
 ### Solver
 And the solver uses [backtracking algorithm](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms)
