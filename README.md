@@ -17,14 +17,14 @@ The generator algorithm is divided into 3 parts
 Sudoku puzzle has 3 diagonal 3x3 boxes that share neither common rows nor columns. Because of that, it’s super safe to fill them first with digits from 1 to 9 and to already have 33% of the grid completed.
 
 #### Filling all remaining cells
-Here we are iterating through all empty cells from non-diagonal boxes and taking the random digit from 1 to 9 to check if it’s safe to put it in just like in the Solver implementation until we find the correct one.
+Here we are iterating through all empty cells from non-diagonal boxes and taking the random digit from 1 to 9 to check if it’s safe to put it in until we find the safe one.
 
 #### Removing the desired number of digits
 Once we have made a grid with correctly filled digits, we have to remove some of them to complete the Sudoku puzzle. Until the desired number of digits is removed, we take the digit from the random row and column.
 This is where I made the modification from the original generator to remove solvable checker for every removal of digits.
 
 ### Solver
-And the solver uses [backtracking algorithm](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms)
+The solver uses [backtracking algorithm](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms)
 - Place the digit "1" in the first cell and check if it is allowed to be there.
 - If there are no violations (checking row, column, and box constraints) then the algorithm advances to the next cell and places a "1" in that cell.
 - When checking for violations, if it is discovered that the "1" is not allowed, the value is advanced to "2".
