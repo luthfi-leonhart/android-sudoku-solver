@@ -4,7 +4,7 @@ A simple sudoku solver for exercise
 The board view were taken from [here](https://github.com/patrickfeltes/sudoku-android-kotlin) with some modifications for the required UI.
 
 The generator and solver algorithm were taken hrom [here](https://medium.com/@typical.dev/lets-make-the-sudoku-generator-library-in-kotlin-8e0dd45c72b6) with slight modification on generator.
-On the original generator it needs to check if the whole field is solvable while removing digits one by one, which sometimes it took to long to generate (more than 5 minutes or so).
+On the original generator it needs to check if the whole field is solvable while removing digits one by one, which sometimes it took too long to generate (more than 5 minutes or so).
 So I modified it by removing the solvable condition and let the user know if the generated board is unsolvable.
 
 You can try the app [here](https://drive.google.com/open?id=13EqVNgxkWKDgOxBfUgwrnsyaNwdtZKMs).
